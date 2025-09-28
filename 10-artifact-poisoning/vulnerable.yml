@@ -1,0 +1,29 @@
+name: Vulnerable Workflow
+on:
+  pull_request_target:
+    types: [opened]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Build
+        run: |
+          ./build.sh
+      - uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: dist/
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: my-artifact
+      - name: Deploy
+        run: |
+          # This script is from the artifact, which can be malicious
+          ./deploy.sh

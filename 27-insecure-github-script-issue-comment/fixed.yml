@@ -1,0 +1,17 @@
+name: Fixed Workflow
+on:
+  issue_comment:
+    types: [created]
+jobs:
+  fixed_job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const comment = context.payload.comment.body;
+            // This script is now safe because it checks the actor's permissions
+            // before performing any privileged operations.
+            if (context.payload.sender.login === 'my-trusted-user') {
+              console.log(`Comment: ${comment}`);
+            }

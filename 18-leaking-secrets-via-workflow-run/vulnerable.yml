@@ -1,0 +1,15 @@
+name: Vulnerable Workflow
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types:
+      - completed
+jobs:
+  vulnerable_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Vulnerable Step
+        run: |
+          # This workflow is triggered on workflow_run, which has access to secrets.
+          # An attacker could exfiltrate secrets by creating a PR that triggers the "CI" workflow.
+          echo "Leaking secret: ${{ secrets.MY_SECRET }}"

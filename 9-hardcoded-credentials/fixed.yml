@@ -1,0 +1,13 @@
+name: Fixed Workflow
+on:
+  push:
+    branches: [ main ]
+jobs:
+  fixed_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fixed Step
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+        run: |
+          echo "Using secret from repository secrets"

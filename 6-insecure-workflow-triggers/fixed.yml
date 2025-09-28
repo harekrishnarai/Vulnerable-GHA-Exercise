@@ -1,0 +1,14 @@
+name: Fixed Workflow
+on:
+  pull_request:
+    types: [opened]
+jobs:
+  fixed_job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Fixed Step
+        run: |
+          # This workflow is triggered on pull_request,
+          # which does not have access to secrets for forked repositories.
+          echo "Running without secrets!"

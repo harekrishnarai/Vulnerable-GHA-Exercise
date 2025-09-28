@@ -1,0 +1,11 @@
+name: Vulnerable Workflow
+on:
+  issues:
+    types: [opened]
+jobs:
+  vulnerable_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Vulnerable Step
+        run: |
+          echo "Running script with user input: ${{ github.event.issue.title }}"

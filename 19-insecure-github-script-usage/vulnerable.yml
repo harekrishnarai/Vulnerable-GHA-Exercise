@@ -1,0 +1,14 @@
+name: Vulnerable Workflow
+on:
+  issues:
+    types: [opened]
+jobs:
+  vulnerable_job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const issueTitle = context.payload.issue.title;
+            // The following line is vulnerable to command injection
+            exec(`echo "Issue title: ${issueTitle}"`);

@@ -1,0 +1,14 @@
+name: Vulnerable Workflow
+on:
+  pull_request:
+    types: [opened]
+jobs:
+  vulnerable_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Vulnerable Step
+        if: github.event.pull_request.title == 'my-special-pr'
+        run: |
+          # This step is vulnerable because an attacker can create a PR with
+          # the title 'my-special-pr' and get this step to run.
+          echo "Running a privileged command"

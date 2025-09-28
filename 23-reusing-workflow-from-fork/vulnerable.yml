@@ -1,0 +1,6 @@
+name: Vulnerable Workflow
+on:
+  pull_request:
+jobs:
+  reusable_workflow_job:
+    uses: some-user/some-repo/.github/workflows/reusable-workflow.yml@main

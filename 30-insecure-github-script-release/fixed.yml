@@ -1,0 +1,17 @@
+name: Fixed Workflow
+on:
+  release:
+    types: [created]
+jobs:
+  fixed_job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const release = context.payload.release;
+            // This script is now safe because it checks the actor's permissions
+            // before performing any privileged operations.
+            if (context.payload.sender.login === 'my-trusted-user') {
+              console.log(`Release name: ${release.name}`);
+            }

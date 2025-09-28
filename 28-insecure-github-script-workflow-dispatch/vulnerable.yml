@@ -1,0 +1,19 @@
+name: Vulnerable Workflow
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Name to greet'
+        required: true
+        default: 'World'
+jobs:
+  vulnerable_job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const name = context.payload.inputs.name;
+            // This script is vulnerable because it's running with access to secrets
+            // and can be influenced by the user input.
+            console.log(`Hello, ${name}!`);

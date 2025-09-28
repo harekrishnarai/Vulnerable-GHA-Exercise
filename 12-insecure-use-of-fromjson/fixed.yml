@@ -1,0 +1,15 @@
+name: Fixed Workflow
+on:
+  issues:
+    types: [opened]
+jobs:
+  fixed_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fixed Step
+        env:
+          USER_INPUT: ${{ github.event.issue.title }}
+        run: |
+          # Avoid using fromJSON with untrusted input.
+          # Instead, parse the input in a script.
+          echo "User input: $USER_INPUT"

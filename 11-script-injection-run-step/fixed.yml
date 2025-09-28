@@ -1,0 +1,13 @@
+name: Fixed Workflow
+on:
+  issues:
+    types: [opened]
+jobs:
+  fixed_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fixed Step
+        env:
+          USER_INPUT: ${{ github.event.issue.title }}
+        run: |
+          echo "Running script with user input: $USER_INPUT"

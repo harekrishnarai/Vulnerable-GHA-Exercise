@@ -1,0 +1,14 @@
+name: Fixed Workflow
+on:
+  pull_request:
+    types: [opened]
+jobs:
+  fixed_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fixed Step
+        if: github.actor == 'my-trusted-user'
+        run: |
+          # This step is now fixed because it checks the actor's username
+          # instead of the PR title.
+          echo "Running a privileged command"

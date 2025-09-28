@@ -1,0 +1,16 @@
+name: Fixed Workflow
+on:
+  pull_request_target:
+    types: [opened]
+jobs:
+  fixed_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout base
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+      - name: Fixed Step
+        run: |
+          # This script is from the base branch, so it is safe
+          ./run.sh

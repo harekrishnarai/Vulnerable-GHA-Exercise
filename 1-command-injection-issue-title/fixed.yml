@@ -1,0 +1,15 @@
+name: Fixed Workflow
+on:
+  issues:
+    types: [opened]
+jobs:
+  fixed_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fixed Step
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+        run: |
+          echo "Issue title: $ISSUE_TITLE"
+          # The following line is now safe from command injection
+          echo "Running command with issue title: $ISSUE_TITLE"

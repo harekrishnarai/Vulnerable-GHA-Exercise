@@ -1,0 +1,16 @@
+name: Vulnerable Workflow
+on:
+  issues:
+    types: [opened]
+jobs:
+  vulnerable_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Vulnerable Step
+        env:
+          USER_INPUT: ${{ github.event.issue.title }}
+        run: |
+          # The following line is vulnerable to command injection
+          # if the user input is not properly sanitized.
+          echo "User input: $USER_INPUT"
+          eval $USER_INPUT

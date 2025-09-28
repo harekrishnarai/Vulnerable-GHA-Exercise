@@ -1,0 +1,11 @@
+name: Fixed Workflow
+on:
+  push:
+    branches: [ main ]
+jobs:
+  fixed_job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Fixed Action
+        uses: some-user/some-action@<commit-hash>

@@ -1,0 +1,13 @@
+name: Vulnerable Workflow
+on:
+  push:
+    branches: [ main ]
+jobs:
+  vulnerable_job:
+    runs-on: self-hosted
+    steps:
+      - name: Vulnerable Step
+        run: |
+          # This workflow runs on a self-hosted runner and is publicly accessible.
+          # An attacker could potentially gain access to the runner.
+          echo "Running on a self-hosted runner"

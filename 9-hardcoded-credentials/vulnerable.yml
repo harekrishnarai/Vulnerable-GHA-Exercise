@@ -1,0 +1,13 @@
+name: Vulnerable Workflow
+on:
+  push:
+    branches: [ main ]
+jobs:
+  vulnerable_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Vulnerable Step
+        env:
+          API_KEY: "my-super-secret-api-key"
+        run: |
+          echo "Using hardcoded secret"

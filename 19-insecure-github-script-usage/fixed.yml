@@ -1,0 +1,14 @@
+name: Fixed Workflow
+on:
+  issues:
+    types: [opened]
+jobs:
+  fixed_job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const issueTitle = context.payload.issue.title;
+            // The user input is now treated as a string and not executed.
+            console.log(`Issue title: ${issueTitle}`);

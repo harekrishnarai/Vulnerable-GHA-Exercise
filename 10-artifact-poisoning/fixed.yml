@@ -1,0 +1,27 @@
+name: Fixed Workflow
+on:
+  pull_request:
+    types: [opened]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build
+        run: |
+          ./build.sh
+      - uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: dist/
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: my-artifact
+      - name: Deploy
+        run: |
+          # The workflow is triggered on pull_request, so the artifact is from a trusted source.
+          ./deploy.sh

@@ -1,0 +1,15 @@
+name: Fixed Workflow
+on:
+  push:
+    branches: [ main ]
+jobs:
+  fixed_job:
+    runs-on: self-hosted
+    container:
+      image: my-secure-image
+    steps:
+      - name: Fixed Step
+        run: |
+          # This workflow now runs in a container on the self-hosted runner,
+          # providing an extra layer of isolation.
+          echo "Running in a container on a self-hosted runner"

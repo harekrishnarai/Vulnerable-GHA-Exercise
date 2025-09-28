@@ -1,0 +1,14 @@
+name: Fixed Workflow
+on:
+  schedule:
+    - cron: '0 0 * * *'
+jobs:
+  fixed_job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            // This script is now safer because it's more explicit about
+            // what it's doing, and has been reviewed for security.
+            console.log("Doing something with secrets, but safely!");

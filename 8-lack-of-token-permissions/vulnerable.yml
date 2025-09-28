@@ -1,0 +1,12 @@
+name: Vulnerable Workflow
+on:
+  push:
+    branches: [ main ]
+jobs:
+  vulnerable_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Vulnerable Step
+        run: |
+          # This workflow has default (broad) token permissions
+          echo "Running with default permissions"

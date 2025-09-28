@@ -1,0 +1,15 @@
+name: Vulnerable Workflow
+on:
+  release:
+    types: [created]
+jobs:
+  vulnerable_job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const release = context.payload.release;
+            // This script is vulnerable because it's running with access to secrets
+            // and can be influenced by the release name.
+            console.log(`Release name: ${release.name}`);

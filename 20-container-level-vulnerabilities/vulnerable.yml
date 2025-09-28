@@ -1,0 +1,14 @@
+name: Vulnerable Workflow
+on:
+  push:
+    branches: [ main ]
+jobs:
+  vulnerable_job:
+    runs-on: ubuntu-latest
+    container:
+      image: node:12
+    steps:
+      - name: Vulnerable Step
+        run: |
+          # This workflow uses an old version of node, which may have vulnerabilities.
+          echo "Running on node:12"

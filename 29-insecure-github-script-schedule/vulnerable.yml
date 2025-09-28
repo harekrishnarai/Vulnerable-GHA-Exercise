@@ -1,0 +1,15 @@
+name: Vulnerable Workflow
+on:
+  schedule:
+    - cron: '0 0 * * *'
+jobs:
+  vulnerable_job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            // This script is vulnerable because it's running on a schedule
+            // with access to secrets, and could be compromised if the
+            // repository is compromised.
+            console.log("Doing something with secrets...");

@@ -1,0 +1,15 @@
+name: Fixed Workflow
+on:
+  pull_request:
+    types: [opened]
+jobs:
+  fixed_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fixed Step
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          echo "PR title: $PR_TITLE"
+          # The following line is now safe from command injection
+          echo "Running command with PR title: $PR_TITLE"

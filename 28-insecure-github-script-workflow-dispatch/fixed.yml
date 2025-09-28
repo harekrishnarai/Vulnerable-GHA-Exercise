@@ -1,0 +1,21 @@
+name: Fixed Workflow
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Name to greet'
+        required: true
+        default: 'World'
+jobs:
+  fixed_job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const name = context.payload.inputs.name;
+            // This script is now safe because it checks the actor's permissions
+            // before performing any privileged operations.
+            if (context.payload.sender.login === 'my-trusted-user') {
+              console.log(`Hello, ${name}!`);
+            }

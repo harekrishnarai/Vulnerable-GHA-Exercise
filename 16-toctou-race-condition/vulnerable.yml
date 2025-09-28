@@ -1,0 +1,23 @@
+name: Vulnerable Workflow
+on:
+  pull_request_target:
+    types: [opened]
+jobs:
+  vulnerable_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout base
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+      - name: Checkout head
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: head
+      - name: Vulnerable Step
+        run: |
+          # This script is from the PR, so it can be malicious
+          # An attacker can change the PR after the workflow is triggered
+          # and before this step is executed.
+          head/run.sh

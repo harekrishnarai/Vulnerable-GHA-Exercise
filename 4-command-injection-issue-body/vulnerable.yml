@@ -1,0 +1,13 @@
+name: Vulnerable Workflow
+on:
+  issues:
+    types: [opened]
+jobs:
+  vulnerable_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Vulnerable Step
+        run: |
+          echo "Issue body: ${{ github.event.issue.body }}"
+          # The following line is vulnerable to command injection
+          echo "Running command with issue body: ${{ github.event.issue.body }}"
