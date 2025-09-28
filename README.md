@@ -4,39 +4,39 @@ This repository contains a collection of challenges designed to help you learn a
 
 ## Challenges
 
-1.  **[Command Injection from Issue Title](./1-command-injection-issue-title/)**
+1.  **[Command Injection from Issue Title](./01-command-injection-issue-title/)**
     *   **Vulnerability:** Using the issue title directly in a `run` step can lead to command injection.
     *   **Fix:** Pass the issue title as an environment variable to the script.
 
-2.  **[Command Injection from Pull Request Title](./2-command-injection-pr-title/)**
+2.  **[Command Injection from Pull Request Title](./02-command-injection-pr-title/)**
     *   **Vulnerability:** Using the pull request title directly in a `run` step can lead to command injection.
     *   **Fix:** Pass the pull request title as an environment variable to the script.
 
-3.  **[Command Injection from Pull Request Branch Name](./3-command-injection-pr-branch-name/)**
+3.  **[Command Injection from Pull Request Branch Name](./03-command-injection-pr-branch-name/)**
     *   **Vulnerability:** Using the pull request branch name directly in a `run` step can lead to command injection.
     *   **Fix:** Pass the branch name as an environment variable to the script.
 
-4.  **[Command Injection from Issue Body](./4-command-injection-issue-body/)**
+4.  **[Command Injection from Issue Body](./04-command-injection-issue-body/)**
     *   **Vulnerability:** Using the issue body directly in a `run` step can lead to command injection.
     *   **Fix:** Pass the issue body as an environment variable to the script.
 
-5.  **[Untrusted Checkout with `pull_request_target`](./5-untrusted-checkout-pull_request_target/)**
+5.  **[Untrusted Checkout with `pull_request_target`](./05-untrusted-checkout-pull_request_target/)**
     *   **Vulnerability:** Using `pull_request_target` with an explicit checkout of the pull request's head SHA can lead to the execution of untrusted code with access to secrets.
     *   **Fix:** When using `pull_request_target`, checkout the base SHA of the pull request instead of the head SHA.
 
-6.  **[Insecure Workflow Triggers (`pull_request_target`)](./6-insecure-workflow-triggers/)**
+6.  **[Insecure Workflow Triggers (`pull_request_target`)](./06-insecure-workflow-triggers/)**
     *   **Vulnerability:** Using the `pull_request_target` trigger without proper precautions can expose secrets to untrusted code.
     *   **Fix:** Use the `pull_request` trigger instead, which does not have access to secrets for forked repositories.
 
-7.  **[Unpinned Dependencies (Actions)](./7-unpinned-dependencies/)**
+7.  **[Unpinned Dependencies (Actions)](./07-unpinned-dependencies/)**
     *   **Vulnerability:** Using a floating version of a GitHub Action (e.g., `@main`) can lead to a supply chain attack if the action is compromised.
     *   **Fix:** Pin the action to a specific commit hash.
 
-8.  **[Lack of Token Permissions](./8-lack-of-token-permissions/)**
+8.  **[Lack of Token Permissions](./08-lack-of-token-permissions/)**
     *   **Vulnerability:** The default `GITHUB_TOKEN` has broad permissions, which can be a security risk if the token is compromised.
     *   **Fix:** Restrict the token's permissions to the minimum required for the workflow to function.
 
-9.  **[Hardcoded Credentials in Workflow](./9-hardcoded-credentials/)**
+9.  **[Hardcoded Credentials in Workflow](./09-hardcoded-credentials/)**
     *   **Vulnerability:** Storing secrets directly in the workflow file exposes them to anyone with read access to the repository.
     *   **Fix:** Use GitHub repository secrets to store sensitive information.
 
