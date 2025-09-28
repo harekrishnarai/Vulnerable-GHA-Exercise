@@ -93,3 +93,29 @@ Try to use a kernel exploit to gain root access to the host machine.
 **Solution:**
 
 Use a kernel exploit to gain root access to the host machine and then read the contents of the `/root/flag.txt` file.
+
+## Organizer Instructions
+
+### Setting up the repository
+
+1.  Create a new repository for the CTF.
+2.  Add the vulnerable workflows to the `.github/workflows` directory.
+
+### Creating the flags
+
+1.  For challenge 1, create a file called `flag.txt` in the root of the repository with the flag.
+2.  For challenge 2, create a secret called `FLAG` with the flag.
+3.  For challenge 3, create a file called `flag.txt` in the `/root` directory of the self-hosted runner with the flag.
+
+### Managing secrets
+
+1.  For challenge 2, you will need to create a secret called `FLAG` with the flag.
+
+### Setting up the self-hosted runner
+
+1.  For challenge 3, you will need to set up a self-hosted runner. You can find instructions on how to do this in the [GitHub documentation](https://docs.github.com/en/actions/hosting-your-own-runners/adding-self-hosted-runners).
+
+### Running the CTF
+
+1.  Once you have set up the repository and the challenges, you can invite users to participate in the CTF.
+2.  To verify the solutions, you can check the workflow logs for the correct output.
