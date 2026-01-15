@@ -1,4 +1,5 @@
 # GitHub Actions Vulnerabilities and Fixes
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/harekrishnarai/Vulnerable-GHA-Exercise)
 
 This repository contains a collection of challenges designed to help you learn about common GitHub Actions vulnerabilities and how to fix them. Each challenge is inspired by the work of security researcher Adnan E Khan.
 
